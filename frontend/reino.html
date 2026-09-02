@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Narnia — El Reino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/panel.css" />
+    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/buttons.css" />
+    <link rel="stylesheet" href="css/reino.css" />
+  </head>
+  <body>
+    <section class="realm" aria-label="Interior del reino">
+      <div class="realm__backdrop" aria-hidden="true"></div>
+      <div class="realm__overlay" aria-hidden="true"></div>
+      <div class="realm__mist" aria-hidden="true"></div>
+
+      <div class="login-panel reino-panel">
+        <div class="login-panel__frame" aria-hidden="true"></div>
+        <div class="login-panel__wood">
+          <header class="login-brand">
+            <img
+              class="login-brand__crest"
+              src="assets/crest-helmet.png"
+              alt=""
+              width="96"
+              height="96"
+            />
+            <h1 class="login-brand__title">Narnia</h1>
+            <p class="login-brand__subtitle" id="reino-subtitle">Comprobando el sello de sesión…</p>
+            <div class="login-brand__divider" aria-hidden="true">
+              <span class="login-brand__jewel"></span>
+            </div>
+          </header>
+
+          <div class="reino-body" id="reino-body" hidden>
+            <p class="reino-welcome" id="reino-mensaje"></p>
+            <dl class="reino-meta">
+              <div>
+                <dt>Rol</dt>
+                <dd id="reino-rol"></dd>
+              </div>
+              <div>
+                <dt>Contenidos</dt>
+                <dd id="reino-contenidos"></dd>
+              </div>
+              <div>
+                <dt>Sello</dt>
+                <dd id="reino-sello">sesión activa (~60 s)</dd>
+              </div>
+            </dl>
+            <button class="login-button" type="button" id="logout-button">
+              <span class="login-button__glow" aria-hidden="true"></span>
+              <span class="login-button__label">Salir del Reino</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="js/reino.js"></script>
+  </body>
+</html>

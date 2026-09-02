@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Narnia — Entrar al Reino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/panel.css" />
+    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/buttons.css" />
+    <link rel="stylesheet" href="css/icons.css" />
+  </head>
+  <body>
+    <section class="realm" aria-label="Acceso al reino">
+      <div class="realm__backdrop" aria-hidden="true"></div>
+      <div class="realm__overlay" aria-hidden="true"></div>
+      <div class="realm__mist" aria-hidden="true"></div>
+
+      <div class="login-panel">
+        <div class="login-panel__frame" aria-hidden="true"></div>
+        <div class="login-panel__wood">
+          <header class="login-brand">
+            <img
+              class="login-brand__crest"
+              src="assets/crest-helmet.png"
+              alt=""
+              width="96"
+              height="96"
+            />
+            <h1 class="login-brand__title">Narnia</h1>
+            <p class="login-brand__subtitle">Las puertas del reino aguardan</p>
+            <div class="login-brand__divider" aria-hidden="true">
+              <span class="login-brand__jewel"></span>
+            </div>
+          </header>
+
+          <form class="login-form" id="login-form" action="/login" method="post" novalidate>
+            <p class="login-alert" id="login-alert" role="alert" hidden></p>
+
+            <label class="login-field">
+              <span class="login-field__icon" aria-hidden="true">✉️</span>
+              <input
+                class="login-field__input"
+                type="text"
+                name="username"
+                autocomplete="username"
+                placeholder="Usuario"
+                required
+              />
+              <span class="visually-hidden">Usuario</span>
+            </label>
+
+            <label class="login-field">
+              <span class="login-field__icon" aria-hidden="true">🔑</span>
+              <input
+                class="login-field__input"
+                type="password"
+                name="pass"
+                autocomplete="current-password"
+                placeholder="Password"
+                required
+              />
+              <span class="visually-hidden">Password</span>
+            </label>
+
+            <button class="login-button" type="submit" id="login-submit">
+              <span class="login-button__glow" aria-hidden="true"></span>
+              <span class="login-button__label">Entrar al Reino</span>
+            </button>
+
+            <nav class="login-links" aria-label="Opciones de cuenta">
+              <a class="login-links__item" href="#registrar" data-unavailable="registrar">¿Registrar?</a>
+              <span class="login-links__sep" aria-hidden="true">·</span>
+              <a class="login-links__item" href="#recuperar" data-unavailable="recuperar">¿Olvidaste tu contraseña?</a>
+            </nav>
+
+            <ul class="social-icons">
+              <li>
+                <a class="social-icon social-icon--facebook" href="#facebook" data-unavailable="facebook" aria-label="Continuar con Facebook">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14.5 8.5H16V6h-1.5C12.6 6 11 7.6 11 9.5V11H9v2.5h2V20h2.5v-6.5H16L16.5 11H13.5V9.5c0-.6.4-1 1-1Z" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a class="social-icon social-icon--ok" href="#ok" data-unavailable="ok" aria-label="Continuar con Odnoklassniki">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 11.2a3.4 3.4 0 1 0 0-6.8 3.4 3.4 0 0 0 0 6.8Zm0-5.1a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4Zm4.1 7.4a7.4 7.4 0 0 1-8.2 0l-1 1.5a8.8 8.8 0 0 0 3.6 1.6l-3.5 3.5 1.2 1.2L12 17.6l3.8 3.7 1.2-1.2-3.5-3.5a8.8 8.8 0 0 0 3.6-1.6l-1-1.5Z" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a class="social-icon social-icon--vk" href="#vk" data-unavailable="vk" aria-label="Continuar con VK">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M13.2 16.6c-4.3 0-6.8-3-6.9-8h2.2c.1 3.6 1.7 5.1 3 5.3V8.6h2.1v3c1.2-.1 2.5-1.5 3-3h2.1c-.4 2.3-1.8 3.6-2.8 4.1 1 .4 2.6 1.5 3.2 3.9h-2.3c-.5-1.6-1.8-2.8-3.2-3v3Z" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a class="social-icon social-icon--guest" href="#invitado" data-unavailable="invitado" aria-label="Entrar como invitado">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 12.4a3.1 3.1 0 1 0 0-6.2 3.1 3.1 0 0 0 0 6.2Zm0 1.5c3.4 0 6.2 1.8 6.2 4v.7H5.8V17.9c0-2.2 2.8-4 6.2-4Z" />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script src="js/login.js"></script>
+  </body>
+</html>
