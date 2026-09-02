@@ -1,3 +1,4 @@
+/* El formulario es una columna: recado, campos, botón, links, redes. */
 .login-form {
   display: flex;
   flex-direction: column;
@@ -6,7 +7,26 @@
   gap: 0.85rem;
 }
 
+/* Cada campo = etiqueta arriba + caja de escritura abajo. */
 .login-field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.38rem;
+}
+
+.login-field__label {
+  padding-left: 0.15rem;
+  font-family: var(--font-serif);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
+
+/* La caja relativa permite posar el ícono a la izquierda y el ojito a la derecha. */
+.login-field__control {
   position: relative;
   display: flex;
   align-items: center;
@@ -16,46 +36,104 @@
   position: absolute;
   left: 0.85rem;
   z-index: 1;
-  font-size: 0.95rem;
-  line-height: 1;
-  pointer-events: none;
-  filter: grayscale(0.15);
+  display: grid;
+  place-items: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--gold);
+  pointer-events: none; /* el click entra al input, no al dibujo */
 }
 
+.login-field__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Hueco tallado en la madera: texto a la derecha del ícono. */
 .login-field__input {
   width: 100%;
-  height: 2.85rem;
+  height: 3rem;
   padding: 0 1rem 0 2.55rem;
-  border: 1px solid #8d6b2d;
-  border-radius: 3px;
+  border: 1px solid rgba(141, 107, 45, 0.85);
+  border-radius: var(--radius);
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 40%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22), transparent 42%),
     var(--field);
   color: #f7f1e4;
   font-family: var(--font-sans);
   font-size: 0.95rem;
+  font-weight: 500;
   letter-spacing: 0.01em;
   box-shadow:
-    inset 0 2px 6px rgba(0, 0, 0, 0.45),
-    0 1px 0 rgba(240, 215, 140, 0.12);
+    inset 0 2px 7px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(240, 215, 140, 0.1);
   outline: none;
-  transition: border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 
 .login-field__input::placeholder {
-  color: rgba(235, 220, 190, 0.55);
+  color: rgba(235, 220, 190, 0.38);
+  font-weight: 400;
 }
 
 .login-field__input:hover {
   border-color: #c4a04a;
 }
 
+/* Al escribir, el borde se vuelve oro y hay un halo suave. */
 .login-field__input:focus {
   border-color: var(--gold-bright);
   box-shadow:
-    inset 0 2px 6px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(240, 215, 140, 0.35),
-    0 0 16px rgba(212, 175, 55, 0.35);
+    inset 0 2px 7px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(234, 211, 154, 0.28),
+    0 0 14px rgba(201, 164, 74, 0.22);
+}
+
+/* JS pone is-invalid si mandaste el form vacío o con clave mal. */
+.login-field.is-invalid .login-field__input {
+  border-color: #c45a5a;
+  box-shadow: inset 0 2px 7px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(178, 34, 34, 0.3);
+}
+
+/* Chrome pinta de amarillo el autofill; lo tapamos con el mismo marrón del campo. */
+.login-field__input:-webkit-autofill,
+.login-field__input:-webkit-autofill:hover,
+.login-field__input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f7f1e4;
+  caret-color: #f7f1e4;
+  box-shadow: 0 0 0 1000px #1a100c inset;
+  transition: background-color 9999s ease-out;
+}
+
+/* Extra aire a la derecha para que el ojito no tape lo que escribís. */
+#pass {
+  padding-right: 2.6rem;
+}
+
+.login-field__reveal {
+  position: absolute;
+  right: 0.35rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--gold);
+  cursor: pointer;
+}
+
+.login-field__reveal:hover,
+.login-field__reveal[aria-pressed="true"] {
+  color: var(--gold-bright);
+}
+
+.login-field__reveal svg {
+  width: 1.1rem;
+  height: 1.1rem;
 }
 
 .login-links {
@@ -63,14 +141,15 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.4rem 0.55rem;
-  margin-top: 0.15rem;
+  gap: 0.55rem 0.85rem;
+  margin-top: 0.1rem;
 }
 
 .login-links__item {
   font-family: var(--font-sans);
-  font-size: 0.78rem;
-  color: rgba(244, 230, 200, 0.78);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--parchment-muted);
   text-decoration: none;
   letter-spacing: 0.01em;
   transition: color 0.2s ease;
@@ -79,32 +158,58 @@
 .login-links__item:hover,
 .login-links__item:focus-visible {
   color: var(--gold-bright);
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
+/* Puntito de oro entre “Crear cuenta” y “Recuperar acceso”. */
 .login-links__sep {
-  color: rgba(212, 175, 55, 0.55);
-  font-size: 0.8rem;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(201, 164, 74, 0.7);
+}
+
+/* “o continuar”: texto al medio y líneas que se deshacen a los lados. */
+.login-split {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0.15rem 0 0.05rem;
+  color: var(--parchment-muted);
+  font-family: var(--font-serif);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.login-split::before,
+.login-split::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 164, 74, 0.45), transparent);
 }
 
 .login-alert {
   margin: 0;
-  padding: 0.55rem 0.7rem;
-  border-radius: 3px;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius);
   font-size: 0.8rem;
-  line-height: 1.35;
+  line-height: 1.4;
   text-align: center;
 }
 
+.login-alert[hidden] {
+  display: none;
+}
+
 .login-alert[data-tone="error"] {
-  border: 1px solid rgba(178, 34, 34, 0.65);
-  background: rgba(80, 12, 12, 0.55);
-  color: #f7d4d4;
+  border: 1px solid rgba(178, 34, 34, 0.55);
+  background: rgba(70, 12, 12, 0.62);
+  color: #f6d6d6;
 }
 
 .login-alert[data-tone="success"] {
-  border: 1px solid rgba(212, 175, 55, 0.55);
-  background: rgba(48, 36, 12, 0.55);
+  border: 1px solid rgba(201, 164, 74, 0.5);
+  background: rgba(42, 32, 12, 0.62);
   color: var(--gold-bright);
 }

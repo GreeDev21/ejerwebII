@@ -1,37 +1,40 @@
+/* Marco de raíces. “screen” hace transparente el negro de la imagen y deja brillar el oro. */
 .login-panel__frame {
   position: absolute;
-  inset: -3.4rem -2.15rem -3.1rem;
+  inset: -3.15rem -1.85rem -2.85rem; /* se sale un poco de la caja para abrazarla */
   background: url("../assets/ornate-frame.png") center / 100% 100% no-repeat;
   mix-blend-mode: screen;
-  pointer-events: none;
+  pointer-events: none; /* los clicks pasan al formulario, no al dibujo */
   z-index: 4;
-  filter: contrast(1.15) saturate(1.2) brightness(1.18);
+  filter: contrast(1.08) saturate(1.08) brightness(1.08);
 }
 
+/* Tabla de madera: columnas apiladas (logo, campos, botón). */
 .login-panel__wood {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.7rem 2rem 1.85rem;
+  padding: 1.85rem 1.85rem 1.7rem;
   background:
-    linear-gradient(180deg, rgba(255, 214, 140, 0.08), transparent 18%),
-    linear-gradient(180deg, rgba(12, 7, 4, 0.28), rgba(12, 7, 4, 0.45)),
+    linear-gradient(180deg, rgba(255, 214, 140, 0.07), transparent 22%),
+    linear-gradient(180deg, rgba(10, 6, 4, 0.22), rgba(10, 6, 4, 0.5)),
     url("../assets/wood-texture.png") center / cover no-repeat;
-  border: 1px solid rgba(212, 175, 55, 0.28);
+  border: 1px solid var(--hairline);
   box-shadow:
-    0 28px 60px rgba(0, 0, 0, 0.55),
-    0 8px 18px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(240, 215, 140, 0.22),
-    inset 0 -18px 28px rgba(0, 0, 0, 0.35);
+    0 30px 64px rgba(0, 0, 0, 0.55),
+    0 10px 22px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(240, 215, 140, 0.18),
+    inset 0 -22px 32px rgba(0, 0, 0, 0.32);
 }
 
+/* Filete de oro interno, como un segundo marco tallado. */
 .login-panel__wood::before {
   content: "";
   position: absolute;
-  inset: 0.45rem;
-  border: 1px solid rgba(212, 175, 55, 0.16);
+  inset: 0.5rem;
+  border: 1px solid rgba(201, 164, 74, 0.14);
   pointer-events: none;
 }
 
@@ -43,43 +46,79 @@
   width: 100%;
 }
 
-.login-brand__crest {
+/* Caja del yelmo: el círculo de atrás es el resplandor de las llamas. */
+.login-brand__crest-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
   width: 5.6rem;
   height: 5.6rem;
+  margin-bottom: 0.15rem;
+}
+
+.login-brand__crest-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 140, 40, 0.32), transparent 68%);
+  pointer-events: none;
+}
+
+/* screen: el fondo negro de la foto del yelmo se funde y quedan fuego y metal. */
+.login-brand__crest {
+  position: relative;
+  width: 5.25rem;
+  height: 5.25rem;
   object-fit: contain;
   mix-blend-mode: screen;
-  filter: drop-shadow(0 0 12px rgba(255, 120, 30, 0.45));
-  margin-bottom: 0.15rem;
-  animation: crest-flicker 3.6s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 120, 30, 0.32));
+  animation: crest-flicker 4.2s ease-in-out infinite;
+}
+
+/* Línea chica encima del título, como “capítulo de libro”. */
+.login-brand__kicker {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-serif);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--parchment-muted);
 }
 
 .login-brand__title {
-  margin: 0;
+  margin: 0.2rem 0 0;
   font-family: var(--font-display);
-  font-size: clamp(1.85rem, 5vw, 2.35rem);
+  font-size: clamp(1.7rem, 4.6vw, 2.15rem); /* se achica un poco en celular */
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  line-height: 1.15;
   color: var(--gold-bright);
   text-shadow:
-    0 2px 0 #3d2a0c,
-    0 0 18px rgba(212, 175, 55, 0.35);
+    0 1px 0 #3a280c,
+    0 0 16px rgba(201, 164, 74, 0.28);
 }
 
 .login-brand__subtitle {
-  margin: 0.35rem 0 0;
+  margin: 0.4rem 0 0;
+  max-width: 18rem;
   font-family: var(--font-serif);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(244, 230, 200, 0.72);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: none;
+  color: var(--parchment-muted);
 }
 
+/* Línea que se desvanece a los costados, gema al medio. */
 .login-brand__divider {
   position: relative;
-  width: 72%;
+  width: 68%;
   height: 1px;
-  margin: 1rem 0 1.15rem;
+  margin: 1.05rem 0 1.15rem;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
@@ -87,32 +126,33 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #ffe7a3, #d4af37 45%, #6b3b08);
-  box-shadow: 0 0 10px rgba(240, 180, 60, 0.8);
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 1px;
+  background: radial-gradient(circle at 35% 35%, #fff1c2, #c9a44a 48%, #6b3b08);
+  box-shadow: 0 0 8px rgba(240, 180, 60, 0.7);
   transform: translate(-50%, -50%) rotate(45deg);
-  animation: jewel-pulse 2.4s ease-in-out infinite;
+  animation: jewel-pulse 2.8s ease-in-out infinite;
 }
 
+/* El fuego del yelmo “respira”: más y menos brillo. */
 @keyframes crest-flicker {
   0%,
   100% {
-    filter: drop-shadow(0 0 10px rgba(255, 120, 30, 0.38));
+    filter: drop-shadow(0 0 8px rgba(255, 120, 30, 0.28));
   }
   50% {
-    filter: drop-shadow(0 0 18px rgba(255, 150, 40, 0.7));
+    filter: drop-shadow(0 0 14px rgba(255, 150, 40, 0.5));
   }
 }
 
 @keyframes jewel-pulse {
   0%,
   100% {
-    box-shadow: 0 0 8px rgba(240, 180, 60, 0.65);
+    box-shadow: 0 0 6px rgba(240, 180, 60, 0.5);
   }
   50% {
-    box-shadow: 0 0 16px rgba(255, 210, 90, 1);
+    box-shadow: 0 0 12px rgba(255, 210, 90, 0.85);
   }
 }
 
@@ -125,15 +165,16 @@
 
 @media (max-width: 480px) {
   .login-panel__frame {
-    inset: -2.6rem -1.2rem -2.4rem;
+    inset: -2.4rem -1.05rem -2.2rem;
   }
 
   .login-panel__wood {
-    padding: 1.4rem 1.2rem 1.5rem;
+    padding: 1.45rem 1.15rem 1.75rem;
   }
 
+  .login-brand__crest-wrap,
   .login-brand__crest {
-    width: 4.6rem;
-    height: 4.6rem;
+    width: 4.5rem;
+    height: 4.5rem;
   }
 }

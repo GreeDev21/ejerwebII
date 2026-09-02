@@ -1,15 +1,18 @@
 <!DOCTYPE html>
+<!-- Página de adentro: solo se ve completa si ya cruzaste el login. -->
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a100b" />
     <title>Narnia — El Reino</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Mismos estilos del login, más reino.css para la carta del viajero. -->
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/panel.css" />
     <link rel="stylesheet" href="css/form.css" />
@@ -26,37 +29,56 @@
         <div class="login-panel__frame" aria-hidden="true"></div>
         <div class="login-panel__wood">
           <header class="login-brand">
-            <img
-              class="login-brand__crest"
-              src="assets/crest-helmet.png"
-              alt=""
-              width="96"
-              height="96"
-            />
+            <div class="login-brand__crest-wrap">
+              <img
+                class="login-brand__crest"
+                src="assets/crest-helmet.png"
+                alt=""
+                width="88"
+                height="88"
+              />
+            </div>
+            <p class="login-brand__kicker">Salón del consejo</p>
             <h1 class="login-brand__title">Narnia</h1>
-            <p class="login-brand__subtitle" id="reino-subtitle">Comprobando el sello de sesión…</p>
+            <!-- Este texto cambia: primero “leyendo…”, después “las puertas se abrieron”. -->
+            <p class="login-brand__subtitle" id="reino-subtitle">Leyendo el sello de sesión…</p>
             <div class="login-brand__divider" aria-hidden="true">
               <span class="login-brand__jewel"></span>
             </div>
           </header>
 
+          <!-- hidden: se muestra recién cuando el servidor confirma que hay sesión. -->
           <div class="reino-body" id="reino-body" hidden>
-            <p class="reino-welcome" id="reino-mensaje"></p>
-            <dl class="reino-meta">
-              <div>
-                <dt>Rol</dt>
-                <dd id="reino-rol"></dd>
+            <!-- Fila del viajero: inicial, nombre y rol (docente, etc.). -->
+            <div class="reino-hero">
+              <div class="reino-avatar" id="reino-avatar" aria-hidden="true">A</div>
+              <div class="reino-hero__copy">
+                <p class="reino-hero__label">Viajero reconocido</p>
+                <p class="reino-welcome" id="reino-nombre">—</p>
               </div>
-              <div>
-                <dt>Contenidos</dt>
-                <dd id="reino-contenidos"></dd>
+              <span class="reino-badge" id="reino-rol">—</span>
+            </div>
+
+            <!-- Frase que manda el servidor, por ejemplo “Bienvenido al dashboard AGUSTIN”. -->
+            <p class="reino-note" id="reino-mensaje"></p>
+
+            <div class="reino-card">
+              <div class="reino-card__row">
+                <span>Archivo</span>
+                <strong id="reino-contenidos">—</strong>
               </div>
-              <div>
-                <dt>Sello</dt>
-                <dd id="reino-sello">sesión activa (~60 s)</dd>
+              <div class="reino-card__row">
+                <span>Sello de sesión</span>
+                <!-- Cuenta atrás de un minuto: así dura la cookie en el servidor. -->
+                <strong id="reino-sello">60 s</strong>
               </div>
-            </dl>
-            <button class="login-button" type="button" id="logout-button">
+              <div class="reino-meter" aria-hidden="true">
+                <span class="reino-meter__bar" id="reino-meter"></span>
+              </div>
+            </div>
+
+            <!-- Ghost: no es el rojo de “entrar”, es “irme con calma”. -->
+            <button class="login-button login-button--ghost" type="button" id="logout-button">
               <span class="login-button__glow" aria-hidden="true"></span>
               <span class="login-button__label">Salir del Reino</span>
             </button>

@@ -1,6 +1,8 @@
+# Cosas que no subimos al repo
 node_modules/
 backend/cookies.txt
 *.log
 .DS_Store
 Thumbs.db
 fondo.jpg
+frontend/assets/_qa-*.png

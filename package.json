@@ -1,0 +1,8 @@
+{
+  "name": "login-agus",
+  "private": true,
+  "scripts": {
+    "start": "npm start --prefix backend",
+    "middleware": "npm run middleware --prefix backend"
+  }
+}
